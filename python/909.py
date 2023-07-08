@@ -9,13 +9,12 @@ class Solution:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
         n = len(board)
         board.reverse()
-        print(board)
         def intToPos(i) -> [int, int]:
             i = i-1
             r = i // n
             c = i%n
 
-            if r%2 == 0:
+            if r%2:
                 # even row
                 c = n - 1 - c
             
@@ -30,9 +29,6 @@ class Solution:
 
             for i in range(pos+1, pos+7):
                 [r, c] = intToPos(i)
-                if i > n*n:
-                    break
-                print(r, c, i)
                 if board[r][c] != -1:
                     i = board[r][c]
                 if board[r][c] == n*n:
